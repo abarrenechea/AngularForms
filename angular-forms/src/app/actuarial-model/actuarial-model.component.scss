@@ -1,0 +1,30 @@
+.actuarial-model {
+  padding: 3em;
+}
+
+.actuarial-model__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.actuarial-model__header {
+  margin-bottom: 1em;
+}
+
+.actuarial-model__results {
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-row:nth-child(even){
+    background-color: #e4f0ec;
+  }
+
+  .mat-row:nth-child(odd){
+      background-color:#ffffff;
+  }
+}

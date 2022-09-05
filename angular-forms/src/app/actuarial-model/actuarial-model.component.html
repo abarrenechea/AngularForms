@@ -1,1 +1,65 @@
-<p>actuarial-model works!</p>
+<div class="actuarial-model">
+    <mat-card class="actuarial-model__header">
+        <mat-card-title>Actuarial Model</mat-card-title>
+        <mat-card-subtitle>Fill in the form and press calculate, the model takes between 3 to 10 seconds to run.</mat-card-subtitle>
+
+        <mat-card-content>
+            <form [formGroup]="actuarialModelForm" class="actuarial-model__form">
+              <mat-form-field appearance="fill">
+                <mat-label>Main Limit</mat-label>
+                <span matPrefix>£ &nbsp;</span>
+                <input matInput type="number" min="0" step='1000000' placeholder="Main Limit" formControlName="mainLimit">
+              </mat-form-field>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Main Retention</mat-label>
+                <span matPrefix>£ &nbsp;</span>
+                <input matInput type="number" min="0" step='1000000' placeholder="Main Retention" formControlName="mainRetention">
+              </mat-form-field>
+      
+              <mat-form-field appearance="fill">
+                  <mat-select formControlName="executionType">
+                      <mat-option *ngFor="let executionType of executionTypes" [value]="executionType" value="option">
+                        {{executionType}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-label>Type of Execution</mat-label>
+              </mat-form-field>
+          
+              <button mat-raised-button color="primary" 
+                [disabled]="!actuarialModelForm.valid || calculateBtn.disabled"
+                (click)="calculate()">{{calculateBtn.label}}
+              </button>
+              
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="actuarial-model__results">
+      <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+          <!-- Reference Date column -->
+          <ng-container matColumnDef="referenceDate">
+            <th mat-header-cell *matHeaderCellDef> Reference Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.referenceDate | date:'dd LLL yyyy'}} </td>
+          </ng-container>
+        
+          <!-- Benchmark 1 column -->
+          <ng-container matColumnDef="benchmark1">
+            <th mat-header-cell *matHeaderCellDef> Benchmark 1 (%)</th>
+            <td mat-cell *matCellDef="let element"> {{element.benchmark1 | number:'1.2-2'}} </td>
+          </ng-container>
+        
+          <!-- Benchmark 2 column -->
+          <ng-container matColumnDef="benchmark2">
+            <th mat-header-cell *matHeaderCellDef> Benchmark 2 (%)</th>
+            <td mat-cell *matCellDef="let element"> {{element.benchmark2 | number:'1.2-2'}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card>
+</div>
