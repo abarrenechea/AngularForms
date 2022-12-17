@@ -3,15 +3,17 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Actuarial Model App</mat-toolbar>
+    <mat-toolbar>Angular Forms</mat-toolbar>
+    
     <mat-nav-list>
-      <a mat-list-item class="nav-link" routerLink="actuarial-model">
-        <mat-icon>app_registration</mat-icon>&nbsp; Actuarial Model
+      <a mat-list-item class="nav-link" routerLink="registration-form">
+        <mat-icon>app_registration</mat-icon>&nbsp; Registration Form
       </a>
       <a mat-list-item class="nav-link" routerLink="about">
         <mat-icon>info</mat-icon>&nbsp; About
       </a>
     </mat-nav-list>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">

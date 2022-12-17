@@ -1,0 +1,24 @@
+.forms {
+    padding: 3em;
+}
+
+.forms__header {
+    margin-bottom: 1em;
+}
+
+.vertical-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+}
+  
